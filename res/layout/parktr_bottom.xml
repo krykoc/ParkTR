@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+    
+    
+    <LinearLayout 
+        android:id="@+id/parktr_bottomRelativeLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="bottom"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        
+        >
+        
+        <Button 
+            android:id="@+id/listParkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="listParkButtonOnClicked"
+            android:layout_gravity="bottom"
+            
+			android:background="@drawable/parktr_iossapp_footerbuttons_listview"
+            />
+        
+        <Button 
+            android:id="@+id/mapLayersButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mapLayersButtonOnClicked"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="6dp"
+			android:background="@drawable/parktr_iossapp_footerbuttons_layers"
+            />        
+            
+        
+        
+        <Button 
+            android:id="@+id/myProfileButton"
+          	 android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           
+            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="274dp"
+            android:onClick="profileClicked"
+			android:background="@drawable/parktr_iossapp_footerbuttons_profile"
+            />        
+            
+        <Button 
+            android:id="@+id/settingsButton"
+          android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="settingsButtonOnClicked"
+            android:layout_gravity="bottom|right"
+             android:layout_marginLeft="6dp"
+			android:background="@drawable/parktr_iossapp_footerbuttons_settings"
+            />                
+        
+    </LinearLayout>
+    
+    <Button 
+            android:id="@+id/myLocationsButton"
+          android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myLocationsButtonOnClicked"
+            android:layout_gravity="bottom|center_horizontal"
+          
+			android:background="@drawable/parktr_iossapp_footerbuttons_mylocation"
+            />
+
+</merge>

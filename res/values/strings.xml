@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ParkTR</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="gps_enable_query">enable agpgjda pjagjpa p ajp </string>
+    <string name="gps_disabled">disabled sfadg adg dag ad</string>
+    <string name="btt_ok">OK</string>
+
+</resources>

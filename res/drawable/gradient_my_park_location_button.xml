@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <bitmap android:src="@drawable/parktr_iossapp_footermylocations"/>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <gradient android:angle="90" android:startColor="#c7c7c710" android:centerColor="#c7c7c710" android:endColor="#c7c7c710"/>
+        </shape>
+    </item>
+</layer-list>

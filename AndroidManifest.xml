@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.esetron.parktr"
+    android:versionCode="1"
+    android:versionName="1.0" >
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+    
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />    
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+   	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<permission android:name="com.uggroup.catchya.permission.MAPS_RECEIVE"
+	    android:protectionLevel="signature" />
+	<uses-permission android:name="com.uggroup.catchya.permission.MAPS_RECEIVE"/>
+
+	<supports-screens
+	    android:smallScreens="false"
+	    android:normalScreens="true"
+	    android:largeScreens="true"       
+	    android:xlargeScreens="false" />	
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:name="android.app.Application"
+        android:theme="@style/AppTheme" >
+        
+    <meta-data
+    	android:name="com.google.android.maps.v2.API_KEY"
+		android:value="AIzaSyCzZhTo9WfW9gIRTy1cutUysgNhBSN0kR0"/>        
+        
+		<activity
+            android:name="com.esetron.parktr.FirstActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" 
+            android:screenOrientation="portrait">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.esetron.parktr.MainActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" 
+            android:screenOrientation="portrait">
+        </activity>		
+          <activity
+            android:name="com.esetron.parktr.ListAllParkLots"
+       	    android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" 
+            android:screenOrientation="portrait">
+           
+        </activity>
+        
+        
+        <service android:name=".LocalService"></service>
+        
+		<uses-library android:name="com.google.android.maps"/>
+		
+    </application>
+
+</manifest>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="main_url">http://data.parktr.com/</string>
+	<string name="get_parking_lots">park/lots</string>
+	<string name="set_park_on">park/on</string>
+	<string name="set_park_off">park/off</string>    
+</resources>
