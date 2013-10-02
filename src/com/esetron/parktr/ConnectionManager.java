@@ -73,6 +73,7 @@ public class ConnectionManager {
 				parkIconObject.setAvailableParkSize(resultJsonArray.getJSONObject(i).getInt("available_park_size"));
 				parkIconObject.setParkingLotID(resultJsonArray.getJSONObject(i).getInt("id"));
 				parkIconObject.setParkinglotName(resultJsonArray.getJSONObject(i).getString("name"));
+				parkIconObject.setParkingLotLocation("ÇANKAYA / ANKARA");
 				LatLng swapLatlng = new LatLng(resultJsonArray.getJSONObject(i).getDouble("latitude"), resultJsonArray.getJSONObject(i).getDouble("longitude"));
 				parkIconObject.setLatLng(swapLatlng);
 				if (Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID()) != null) {

@@ -1,9 +1,10 @@
 package com.esetron.parktr;
 
+import pl.mg6.android.maps.extensions.Marker;
 import android.graphics.Bitmap;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
+
 
 public class ParkIcon {
 
@@ -16,6 +17,7 @@ public class ParkIcon {
 	private LatLng latLng;
 	private boolean isShown = false;
 	private String parkinglotName;
+	private String parkinglotLocation;
 	
 	public ParkIcon() {
 		
@@ -48,6 +50,14 @@ public class ParkIcon {
 	
 	public void setParkingLotID(int parkingLotID) {
 		this.parkingLotID = parkingLotID;
+	}
+	
+	public void setParkingLotLocation(String parkingLotLocation) {
+		this.parkinglotLocation = parkingLotLocation;
+	}
+	
+	public String getParkingLotLocation() {
+		return this.parkinglotLocation;
 	}
 	
 	public int getGarkingLotID() {
@@ -102,10 +112,12 @@ public class ParkIcon {
 		return this.parkinglotName;
 	}
 	
+	
 	public void setObject(ParkIcon parkIcon) {
 		this.marker = parkIcon.getMarker();
 		this.bitmap = parkIcon.getBitmap();
 		this.parkingLotID = parkIcon.getGarkingLotID();
+		this.parkinglotLocation = parkIcon.getParkingLotLocation();
 		this.parkingLotSize = parkIcon.getParkingLotSize();
 		this.availableParkSize = parkIcon.getAvailableParkSize();
 		this.prevAvailableParkSize = parkIcon.getPrevAvailableParkSize();

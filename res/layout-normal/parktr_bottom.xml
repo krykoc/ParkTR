@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+    
+    
+    <RelativeLayout 
+        android:id="@+id/parktr_bottomRelativeLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        
+        >
+        
+        <Button 
+            android:id="@+id/listParkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="listParkButtonOnClicked"
+            android:layout_centerVertical="true"
+			android:background="@drawable/list_bottom_menu_item"
+            />
+        
+        <Button 
+            android:id="@+id/mapLayersButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myLocationsButtonOnClicked"
+            android:layout_toRightOf="@+id/listParkButton"
+			android:background="@drawable/park_bottom_menu_item"
+            />        
+            
+        
+        
+        <Button 
+            android:id="@+id/myProfileButton"
+          	android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mapLayersButton"
+            android:onClick="profileClicked"
+			android:background="@drawable/profile_bottom_menu_item"
+            />        
+            
+     
+    </RelativeLayout>
+    
+   
+
+</merge>

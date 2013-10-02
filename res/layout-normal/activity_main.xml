@@ -1,0 +1,102 @@
+<com.esetron.parktr.MapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity" 
+    android:id="@+id/mainFrameID">
+
+  	<fragment
+        android:id="@+id/mapViewID"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="center_horizontal"
+		android:name="pl.mg6.android.maps.extensions.SupportMapFragment"/>
+  <!--
+    <ImageView 
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/parktr_top_frame"
+        android:contentDescription="content"
+        android:scaleType="centerCrop"
+        android:layout_gravity="top"
+        />   
+        
+          -->
+  <!--      
+    <include 
+        android:id="@+id/bottomLayout"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="bottom"
+    	layout="@layout/my_locations_list"
+    />	  	
+    -->
+    
+    <LinearLayout
+        android:id="@+id/top_menu_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        >
+        
+       <ImageView 
+        android:id="@+id/parktr_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/parktr_top_icon"
+        android:scaleType="centerCrop"
+        android:layout_gravity="top"
+        />   
+        
+       <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/search_top_icon"
+        />
+        
+        
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/cluster_views"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/checkbox_cluster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <SeekBar
+            android:id="@+id/seekbar_cluster_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:visibility="invisible"
+            android:paddingRight="40dp"
+            android:max="4" />
+    </LinearLayout>
+    <LinearLayout  
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentBottom="true"
+    	android:layout_centerHorizontal="true"
+         >
+    <include 
+        android:id="@+id/bottomList"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	layout="@layout/parktr_bottom"
+    />
+    </LinearLayout>
+    
+       		
+
+</com.esetron.parktr.MapWrapperLayout>

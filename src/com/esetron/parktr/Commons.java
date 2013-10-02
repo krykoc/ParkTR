@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -14,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Paint.Align;
 import android.graphics.Typeface;
 import android.location.LocationManager;
@@ -42,6 +45,7 @@ public class Commons {
 	public static ArrayList<ParkIcon> parkingPoints = new ArrayList<ParkIcon>();
 	public static boolean centerMap = true;
 	public static LatLng centerMapLatLng;
+
 
 	public static Map<Integer, Integer> parkingPointsMap = new HashMap<Integer, Integer>();
 	
@@ -99,7 +103,7 @@ public class Commons {
 	 * @param gText
 	 * @return
 	 */
-	public static Bitmap drawTextToBitmap(Context gContext, int gResId, String gText, int count) {
+	public static Bitmap drawTextToBitmap(Context gContext, int gResId, int count) {
 		
 	  Resources resources = gContext.getResources();
 	  float scale = resources.getDisplayMetrics().density;
@@ -117,30 +121,32 @@ public class Commons {
 	 
 	  Canvas canvas = new Canvas(bitmap);
 	  // new antialised Paint
-	  Paint paintWhere = new Paint(Paint.ANTI_ALIAS_FLAG);
-	  // text color - #3D3D3D
-	  paintWhere.setColor(Color.WHITE);
-	  // text size in pixels
-	  paintWhere.setTextSize((int) (20 * scale));
-	  paintWhere.setTextAlign(Align.LEFT);
-	  // text shadow
-	  //paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
-	 
-	  // draw text to the Canvas center
-	  int x = 26;
-	  int y = 45;
-	 
-	  canvas.drawText(gText, x * scale, y * scale, paintWhere);
+//	  Paint paintWhere = new Paint(Paint.ANTI_ALIAS_FLAG);
+//	  // text color - #3D3D3D
+//	  paintWhere.setColor(Color.WHITE);
+//	  // text size in pixels
+//	  paintWhere.setTextSize((int) (20 * scale));
+//	  paintWhere.setTextAlign(Align.CENTER);
+//	  // text shadow
+//	  //paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
+//	 
+//	  // draw text to the Canvas center
 	  
+	 // canvas.drawText(gText, x * scale, y * scale, paintWhere);
+	  
+	  String text = String.valueOf(count);
 	  Paint paintCount = new Paint(Paint.ANTI_ALIAS_FLAG);
-	  
+	  Rect bounds = new Rect();
+	  paintCount.getTextBounds(text, 0, text.length(), bounds);
+	  float x = bitmap.getWidth() / 2.0f;
+	  float y = (bitmap.getHeight() - bounds.height()) / 2.0f - bounds.top;
 	  paintCount.setColor(Color.WHITE);
-	  paintCount.setTextSize((int)(33 * scale));
-	  paintCount.setTextAlign(Align.LEFT);
+	  paintCount.setTextSize((int)(25 * scale));
+	  paintCount.setTextAlign(Align.CENTER);
 	  
 	  paintCount.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
-	  x = 130;
-	  canvas.drawText(Integer.toString(count), x * scale, (y+5) * scale, paintCount);
+	 
+	  canvas.drawText(Integer.toString(count),x,y, paintCount);
 	 
 	  return bitmap;
 	}

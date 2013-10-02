@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RlMain"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"    
+     >
+    <RelativeLayout
+        android:id="@+id/imageview_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/new_gray_info"
+        android:paddingTop="4dp"
+       
+        >
+        
+        
+        <Button
+            android:id="@+id/infoWindowAddBtn"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/add_favorites"
+           
+            />
+        
+         <Button
+            android:id="@+id/infoWindowNavigateBtn"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/infoWindowAddBtn"
+            android:background="@drawable/navigate"
+           
+            />
+
+        <TextView
+            android:id="@+id/infoWindowUpperTV"
+            android:layout_width="match_parent"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+          	android:textSize="16sp"
+          	android:maxLines="1"
+          	android:layout_toRightOf="@+id/infoWindowNavigateBtn"
+            android:textColor="#404040"
+            android:text="ODTÜ Radyo Topluluğu Şenlik Alanı"
+           
+           />
+
+        <TextView
+            android:id="@+id/infoWindowBottomTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/infoWindowNavigateBtn"
+            android:layout_below="@+id/infoWindowUpperTV"
+            android:gravity="right"
+            android:maxLines="1"
+            android:text="ÇANKAYA / ANKARA"
+            android:textSize="16sp"
+            android:textColor="#404040"
+            android:textStyle="normal" />
+    </RelativeLayout>
+</LinearLayout>

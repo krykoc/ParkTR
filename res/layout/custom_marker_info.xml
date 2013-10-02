@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:orientation="horizontal">
+
+    <LinearLayout 
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="left"
+        >
+        
+        <Button 
+        android:id="@+id/cmi_btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:background="@drawable/navigation"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:id="@+id/cmi_tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center_horizontal"
+        android:textColor="#404040"
+        android:layout_marginTop="10dp"
+        android:text="Yol Tarifi Al"
+        />
+    
+    </LinearLayout>
+    
+   <View
+   		 android:layout_width="2dp"
+   		 android:layout_height="50dp"
+   		 android:background="@android:color/darker_gray"
+   		 android:layout_gravity="center"
+   		 />
+
+   <LinearLayout
+       
+      	android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right"
+        >
+       
+       <Button 
+        android:id="@+id/cmi_btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/favorites"
+        />
+    <TextView
+        android:id="@+id/cmi_tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="Favorilerime Ekle"
+        android:layout_marginTop="10dp"
+        android:textColor="#404040"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        />
+    
+    </LinearLayout>
+</LinearLayout>
