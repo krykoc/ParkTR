@@ -44,6 +44,7 @@ public class Commons {
 	public static float mapViewZoomLevel = (float)14.0;
 	public static ArrayList<ParkIcon> parkingPoints = new ArrayList<ParkIcon>();
 	public static boolean centerMap = true;
+	public static boolean bottomMap = false;
 	public static LatLng centerMapLatLng;
 
 

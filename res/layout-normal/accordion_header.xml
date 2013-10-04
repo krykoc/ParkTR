@@ -29,10 +29,12 @@
         <TextView
             android:id="@+id/foldText"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="#0075ca"
-            android:textSize="14sp"
+            android:layout_height="60dp"
+            android:gravity="center_vertical|left"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff7519"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:paddingTop="7sp"
             android:paddingBottom="7sp"
             android:text="Section Name" />

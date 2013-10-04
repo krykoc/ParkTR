@@ -118,6 +118,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
     private Animation mapAnimDown;
     private Button parkTopIcon;
     private Button searchTopIcon;
+    private static com.esetron.parktr.MapWrapperLayout mapContainer;
     private int mapSize;
 	private static final double[] CLUSTER_SIZES = new double[] { 180, 160, 144, 120, 96 };
 	private MutableData[] dataArray = { new MutableData(6, new LatLng(-50, 0)), new MutableData(28, new LatLng(-52, 1)),
@@ -151,6 +152,8 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		
+		mapContainer = (com.esetron.parktr.MapWrapperLayout) findViewById(R.id.mainFrameID);
 		initialize();
 		
 		
@@ -200,8 +203,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
         parkTopIcon.setOnClickListener(new Button.OnClickListener() {  
         public void onClick(View v)
             {
-              String tagList = footerList.getTag().toString();
-              String tagProfile = footerList.getTag().toString();
+             
               
         	//	if(tagList.equals("VISIBLE") && tagProfile.equals("VISIBLE")){
         			
@@ -495,6 +497,9 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 			parktr_bottomRelativeLayout.setVisibility(View.VISIBLE);
 			parkTopIcon.setBackgroundResource(R.drawable.parktr_top_icon);
 	    	searchTopIcon.setBackgroundResource(R.drawable.search_top_icon);
+	    	Commons.centerMap=true;
+	    	showOnMapFunction();
+		
 		}
 			else{
 			
@@ -507,6 +512,8 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 	    	myMapLayout.setTranslationY(mapSize);
 	    	parkTopIcon.setBackgroundResource(R.drawable.back_button);
 	    	searchTopIcon.setBackgroundResource(R.drawable.searchbox_bos);
+	    	Commons.bottomMap=true;
+			showOnMapFunction();
 	    	//footerList.setVisibility(View.VISIBLE);
 			//footerList.startAnimation(animUp);
 			}
@@ -535,6 +542,9 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		if(footerList.getVisibility()== View.VISIBLE)
 			listParkButtonOnClicked(null);
 	
+		
+	    
+	    
 		LayoutParams params = profileList.getLayoutParams();
 		if(profileList.getVisibility()== View.VISIBLE){
 			
@@ -546,10 +556,13 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 			parktr_bottomRelativeLayout.setVisibility(View.VISIBLE);
 			parkTopIcon.setBackgroundResource(R.drawable.parktr_top_icon);
 	    	searchTopIcon.setBackgroundResource(R.drawable.search_top_icon);
+	    	Commons.centerMap=true;
+	    	showOnMapFunction();
+	    	
 		}
 			else{
 			
-			
+		
 			params.height = (int) (display.getHeight()*0.7);
 			Commons.log(""+params.height);
 			mapSize = (params.height)*(-1);
@@ -559,7 +572,8 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 	    	myMapLayout.setTranslationY(mapSize);
 	    	parkTopIcon.setBackgroundResource(R.drawable.back_button);
 	    	searchTopIcon.setBackgroundResource(R.drawable.searchbox_bos);
-			
+			Commons.bottomMap=true;
+			showOnMapFunction();
 			}
 		
 	}
@@ -688,7 +702,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		
 		if(!marker.getId().equals("cm")){
 			
-			
+			 
 			for (int i = 0; i < Commons.parkingPoints.size(); i++) {
 				if (Commons.parkingPoints.get(i).getMarker().getId().equals(marker.getId()) && !Commons.parkingPoints.get(i).getIsShown()) {
 					Commons.log("if");
@@ -696,7 +710,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 					marker.showInfoWindow();
 					selectedMarker=marker;
 					Commons.parkingPoints.get(i).setIsShown(true);
-					com.esetron.parktr.MapWrapperLayout mapContainer = (com.esetron.parktr.MapWrapperLayout) findViewById(R.id.mainFrameID);
+					
 				    int container_height = mapContainer.getHeight();
 				    Projection projection = mapView.getProjection();
 				    LatLng markerLatLng = new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
@@ -830,6 +844,21 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 			
 			if (Commons.centerMap == true) {
 				mapView.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngPointCenter, Commons.mapViewZoomLevel));
+			}
+			
+			if (Commons.bottomMap == true) {
+					
+				 Commons.log("BOTTOM MAP");
+					int container_height = mapContainer.getHeight();
+				    Projection projection = mapView.getProjection();
+				   
+				    Point markerScreenPosition = projection.toScreenLocation(latLngPointCenter);
+				    Point pointHalfScreenAbove = new Point(markerScreenPosition.x, markerScreenPosition.y - (container_height/2));
+				    LatLng aboveMarkerLatLng = projection.fromScreenLocation(pointHalfScreenAbove);
+				    CameraUpdate center = CameraUpdateFactory.newLatLng(aboveMarkerLatLng);
+				    mapView.moveCamera(center);
+				    Commons.bottomMap = false;
+				
 			}
 			mapView.animateCamera(CameraUpdateFactory.zoomTo(Commons.mapViewZoomLevel), 4000, null);
 			Log.i("582","animateCamera");

@@ -19,7 +19,7 @@
         <com.esetron.parktr.AccordionView
             android:id="@+id/accordion_view"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             accordion:header_layout_fold_button_id="@id/foldButton"
             accordion:header_layout_id="@layout/accordion_header"
             accordion:header_layout_label_id="@id/foldText"
@@ -79,10 +79,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Item 4" />
+            
         </com.esetron.parktr.AccordionView>
     </ScrollView>
     </RelativeLayout>

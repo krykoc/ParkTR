@@ -9,11 +9,11 @@
     <string name="btt_ok">OK</string>
 
        <string-array name="accordion_sections">
-        <item>Section A</item>
-        <item>Section B</item>
-        <item>Section C</item>
-        <item>Section D</item>
-        <item>Section E</item>
+        <item>Arabam</item>
+        <item>Favorilerim</item>
+        <item>Filtreler</item>
+        <item>Ayarlar</item>
+        
     </string-array>
 
     <integer-array name="accordion_visibility">
@@ -21,7 +21,7 @@
         <item>1</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
+       
     </integer-array>
     
 </resources>
