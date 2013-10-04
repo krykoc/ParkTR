@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-   
+    android:layout_height="fill_parent"
+
      >
 
 <RelativeLayout 
     
     android:id="@+id/footerListLayout"
-     android:layout_width="wrap_content"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
     android:background="#ffffff"
-    
+   
+
     >
      <View
    		 android:layout_width="fill_parent"
@@ -21,31 +21,30 @@
 		 
 
 		<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" 
-    
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    
    
     >
 
 		 <TextView  
-		 android:layout_width="fill_parent"
+		 android:layout_width="wrap_content"
    		 android:layout_height="75dp"
    		 android:textStyle="bold"
-   		 android:layout_marginLeft="150dp"
-   		 android:layout_marginRight="125dp"
-   		 android:textSize="35dp"
+   		 android:layout_marginLeft="100dp"
+   		 
+   		 android:textSize="25sp"
    		 android:gravity="center_vertical"
 		 android:text="Arabam"
 		 />
 		 <TextView  
 		 android:layout_width="fill_parent"
    		 android:layout_height="50dp"
-   		 android:layout_marginLeft="150dp"
-   		 android:layout_marginRight="125dp"
-   		  android:textColor="#404040"
-   		  android:gravity="center_vertical"
-   		 android:textSize="20dp"
+   		 android:layout_marginLeft="100dp"  		
+   		 android:textColor="#404040"
+   		 android:gravity="center_vertical"
+   		 android:textSize="15dp"
 		 android:text="Çağdaş Market Ayrancı Şubesi,\nY. Ayrancı, Ankara"
 		 />
 		 
@@ -59,30 +58,28 @@
 		 
 		 <TextView  
 		 android:layout_width="fill_parent"
-   		 android:layout_height="100dp"
+   		 android:layout_height="70dp"
    		 android:textStyle="bold"
-   		 android:layout_marginLeft="150dp"
-   		 android:layout_marginRight="125dp"
-   		  android:gravity="bottom"
-   		 android:textSize="35dp"
-   		
+   		 android:layout_marginLeft="100dp"
+		 android:gravity="center_vertical|left"
+   		 android:textSize="25sp"
 		 android:text="Park Yerlerim"
 		 />
 		  <View
    		 android:layout_width="fill_parent"
    		 android:layout_height="2dp"
-   		  android:layout_marginLeft="150dp"
+   		  android:layout_marginLeft="100dp"
    		 android:layout_marginTop="10dp"
    		 android:background="@android:color/darker_gray"/>
 		  
 		<TextView  
 		 android:layout_width="fill_parent"
-   		 android:layout_height="100dp"
-   		 android:layout_marginLeft="150dp"
+   		 android:layout_height="70dp"
+   		 android:layout_marginLeft="100dp"
    		  android:textColor="#404040"
    		  android:gravity="center_vertical"
-   		 android:layout_marginRight="125dp"
-   		  android:textSize="20dp"
+   	
+   		  android:textSize="15sp"
 		 android:text="Çağdaş Market Ayrancı Şubesi,\nY. Ayrancı, Ankara"
 		
 		    />
@@ -90,19 +87,18 @@
 		 <View
    		 android:layout_width="fill_parent"
    		 android:layout_height="2dp"
-   		  android:layout_marginLeft="150dp"
+   		  android:layout_marginLeft="100dp"
    		 android:layout_marginTop="10dp"
    		 android:background="@android:color/darker_gray"/>
 		 
 		 
 		<TextView  
 		 android:layout_width="fill_parent"
-   		 android:layout_height="100dp"
-   		 android:layout_marginLeft="150dp"
-   		  android:gravity="center_vertical"
-   		   android:textColor="#404040"
-   		 android:layout_marginRight="125dp"
-   		  android:textSize="20dp"
+   		 android:layout_height="70dp"
+   		 android:layout_marginLeft="100dp"
+   		 android:gravity="center_vertical"
+   		 android:textColor="#404040"
+   		 android:textSize="15sp"
 		 android:text="Evim,\nDikmen, Ankara"
 		
 		    />
@@ -110,77 +106,51 @@
 		 <View
    		 android:layout_width="fill_parent"
    		 android:layout_height="2dp"
-   		  android:layout_marginLeft="150dp"
+   		  android:layout_marginLeft="100dp"
    		 android:layout_marginTop="10dp"
    		 android:background="@android:color/darker_gray"/>
 		 
-		<TextView  
-		 android:layout_width="fill_parent"
-   		 android:layout_height="100dp"
-   		  android:textSize="20dp"
-   		 android:layout_marginLeft="150dp"
-   		  android:gravity="center_vertical"
-   		   android:textColor="#404040"
-   		 android:layout_marginRight="125dp"
-		 android:text="Vamoos! Sports Complex,\n100. Yıl, Ankara"
-	
-		    />
 		
-		 <View
-   		 android:layout_width="fill_parent"
-   		 android:layout_height="2dp"
-   		  android:layout_marginLeft="150dp"
-   		 android:layout_marginTop="10dp"
-   		 android:background="@android:color/darker_gray"/>
 		 
 		<TextView  
 		 android:layout_width="fill_parent"
-   		 android:layout_height="100dp"
-   		 android:layout_marginLeft="150dp"
-   		 android:layout_marginRight="125dp"
-   		  android:gravity="center_vertical"
-   		  android:textSize="20sp"
-   		   android:textColor="#404040"
+   		 android:layout_height="70dp"
+   		 android:layout_marginLeft="100dp"
+   		 android:gravity="center_vertical"
+   		 android:textSize="15sp"
+   		 android:textColor="#404040"
 		 android:text="Kentpark AVM,\nSöğütözü, Ankara"
 		
 		    />
          <View
    		 android:layout_width="fill_parent"
    		 android:layout_height="2dp"
-   		  android:layout_marginLeft="150dp"
+   		  android:layout_marginLeft="100dp"
    		 android:layout_marginTop="10dp"
    		 android:background="@android:color/darker_gray"/>
 
-         <TextView  
-		 android:layout_width="fill_parent"
-   		 android:layout_height="150dp"
-   		 android:layout_marginLeft="150dp"
-   		 android:layout_marginRight="125dp"
-   		  android:gravity="center_vertical"
-   		  android:textColor="#404040"
-   		  android:textSize="20sp"
-		
-		
-		    />
+         
          
 </LinearLayout>
 
 		
-		<RelativeLayout
+		 <RelativeLayout
+		 
+		 android:id="@+id/left_partial_menu"
 		 android:layout_width="wrap_content"
-   		 android:layout_height="wrap_content"
+   		 android:layout_height="fill_parent"
    		 android:layout_marginTop="150dp"
-		 android:gravity="center_vertical|center_horizontal"
+		
 		 
 		    
 		     >
-		    	 <ImageView 
+		 <ImageView 
 		     
-		 android:layout_width="140dp"
-   		 android:layout_height="140dp"
+		 android:layout_width="80dp"
+   		 android:layout_height="80dp"
    		 android:scaleType="centerCrop"
 		 android:src="@drawable/parktr_iossapp_yellowparklotmarker"
-		    
+		 android:layout_alignParentTop="true" 
 		     />
 		    
 		    

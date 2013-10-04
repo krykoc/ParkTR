@@ -73,21 +73,26 @@ public class ConnectionManager {
 				parkIconObject.setAvailableParkSize(resultJsonArray.getJSONObject(i).getInt("available_park_size"));
 				parkIconObject.setParkingLotID(resultJsonArray.getJSONObject(i).getInt("id"));
 				parkIconObject.setParkinglotName(resultJsonArray.getJSONObject(i).getString("name"));
-				parkIconObject.setParkingLotLocation("ÇANKAYA / ANKARA");
+				parkIconObject.setParkingLotLocation("ÇANKAYA / ANKARA--111--222");
 				LatLng swapLatlng = new LatLng(resultJsonArray.getJSONObject(i).getDouble("latitude"), resultJsonArray.getJSONObject(i).getDouble("longitude"));
 				parkIconObject.setLatLng(swapLatlng);
 				if (Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID()) != null) {
+					
 					parkIconObject.setPrevAvailableParkSize(Commons.parkingPoints.get(Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID())).getPrevAvailableParkSize());
 					parkIconObject.setMarker(Commons.parkingPoints.get(Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID())).getMarker());
 					parkIconObject.setBitmap(Commons.parkingPoints.get(Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID())).getBitmap());
 					parkIconObject.setIsShown(Commons.parkingPoints.get(Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID())).getIsShown());
 					Commons.parkingPoints.get(Commons.parkingPointsMap.get(parkIconObject.getGarkingLotID())).setObject(parkIconObject);
+					
 				} else {
+					
 					Commons.parkingPoints.add(parkIconObject);
 					Commons.parkingPointsMap.put(parkIconObject.getGarkingLotID(), Commons.parkingPoints.size() - 1);
+					
 				}
 			}
 		} catch (Exception ex) {
+			
 			Commons.log("request :"+String.valueOf(request));
 			Commons.log("zz getParkingLots ex :" + ex);
 		

@@ -9,7 +9,9 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.esetron.parktr.Commons.MapLayers;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -34,6 +36,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Interpolator;
@@ -49,6 +52,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
@@ -89,13 +94,14 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 	public static boolean bool_isNETWORK_PROVIDED_MainActivity;
 	public static locationListener locListener_MyLocationListenerForGPS_MainActivity = new locationListener();
 	public RelativeLayout footerList;
+	public RelativeLayout profileList;
 	public View myMapLayout;
 	private TextView infoWindowUpperText;
 	private TextView infoWindowBottomText;
 	private Typeface tfNormal;
 	private Typeface tfLight;
 	private Typeface tfBold;
-	
+	private Marker selectedMarker=null;
 	private View infoWindow;
     private TextView infoTitle;
     private TextView infoSnippet;
@@ -103,9 +109,16 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
     private Button naviButton;
     private OnInfoWindowElemTouchListener addButtonListener;
     private OnInfoWindowElemTouchListener naviButtonListener;
-
+    private android.view.Display display;
     private RelativeLayout infoWindowLayout;
-    
+    private RelativeLayout parktr_bottomRelativeLayout;
+    private Animation animUp;
+    private Animation animDown;
+    private Animation mapAnimUp;
+    private Animation mapAnimDown;
+    private Button parkTopIcon;
+    private Button searchTopIcon;
+    private int mapSize;
 	private static final double[] CLUSTER_SIZES = new double[] { 180, 160, 144, 120, 96 };
 	private MutableData[] dataArray = { new MutableData(6, new LatLng(-50, 0)), new MutableData(28, new LatLng(-52, 1)),
 			new MutableData(496, new LatLng(-51, -2)), };
@@ -144,15 +157,24 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		tfLight = Typeface.createFromAsset(getAssets(),"fonts/ss_light.ttf");
 		tfNormal = Typeface.createFromAsset(getAssets(),"fonts/ss_normal.ttf");
 		tfBold = Typeface.createFromAsset(getAssets(),"fonts/ss_bold.ttf");
-    	
-    	
-    	
+    	 
+		animUp = AnimationUtils.loadAnimation(this, R.anim.anim_up);
+		animDown = AnimationUtils.loadAnimation(this, R.anim.anim_down);
+		mapAnimUp = AnimationUtils.loadAnimation(this, R.anim.map_anim_up);
+		mapAnimDown = AnimationUtils.loadAnimation(this, R.anim.map_anim_down);
+		parkTopIcon = (Button) findViewById(R.id.parktr_icon);
+		searchTopIcon = (Button) findViewById(R.id.search_button);
+		
+		display = ((android.view.WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay(); 
     	
         final MapWrapperLayout mapWrapperLayout = (MapWrapperLayout)findViewById(R.id.mainFrameID);
     	
-	//	footerList = (RelativeLayout) findViewById(R.id.footerListLayout);
+		footerList = (RelativeLayout) findViewById(R.id.footerListLayout);
+		profileList = (RelativeLayout) findViewById(R.id.profileListLayout);
+		parktr_bottomRelativeLayout = (RelativeLayout) findViewById(R.id.parktr_bottomRelativeLayout);
 		myMapLayout = (View) findViewById(R.id.mapViewID);
-	//	footerList.setVisibility(View.GONE);
+		footerList.setVisibility(View.GONE);
+		profileList.setVisibility(View.GONE);
 		context = this;
 		Commons.hostAct = this;
 		Commons.initialFunctions();
@@ -175,7 +197,25 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
         this.infoSnippet.setTypeface(tfLight);
         
        
-      
+        parkTopIcon.setOnClickListener(new Button.OnClickListener() {  
+        public void onClick(View v)
+            {
+              String tagList = footerList.getTag().toString();
+              String tagProfile = footerList.getTag().toString();
+              
+        	//	if(tagList.equals("VISIBLE") && tagProfile.equals("VISIBLE")){
+        			
+        			if(footerList.getVisibility() == View.VISIBLE )
+        				listParkButtonOnClicked(null);
+        			else if(profileList.getVisibility() == View.VISIBLE )
+        				profileClicked(null);
+        			
+        		
+        			
+        		
+        	
+            }
+         });
 		
         
         this.addButtonListener = new OnInfoWindowElemTouchListener(addButton,
@@ -217,11 +257,12 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
         mapView.setInfoWindowAdapter(new InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
-            	
-            	 infoTitle.setText(marker.getTitle());
-            	 Commons.log(marker.getTitle());
-                 infoSnippet.setText(marker.getSnippet());
-                 Commons.log(marker.getSnippet());
+            	 
+            	String[] tokens= parseSnippet(marker.getSnippet());
+
+            	 infoTitle.setText(tokens[0]);        	
+                 infoSnippet.setText(tokens[1]);
+               
                  addButtonListener.setMarker(marker);
                  naviButtonListener.setMarker(marker);
                  mapWrapperLayout.setMarkerWithInfoWindow(marker, infoWindow);
@@ -398,30 +439,26 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 	@Override
 	protected void onPause() {
 		super.onPause();
-		try{
-		Commons.onPause();
-		this.stopService(mainServiceIntent);
-		Log.w("onPause","Service Stopped");
-		Commons.isAppStarted = false;}
-		catch (Exception e) {
-			Log.w("onPause","Service Already Stopped");
-		}
-		handler.removeCallbacks(dataUpdater);
+		Commons.onPause();		
+		
 		
 	}
 	
 	@Override
 	protected void onDestroy() {
 		
+		
 		super.onDestroy();
-		try{
-		//context.stopService(mainServiceIntent);
-		Commons.isAppStarted = false;}
-		catch (Exception e) {
-			Log.w("onDestroy","Service Already Stopped");
-		}
+		Commons.isAppStarted = false;
+		Commons.log("****SERVICE "+ mainServiceIntent);
+		if(mainServiceIntent != null){
+		     this.stopService(mainServiceIntent);
+		     mainServiceIntent = null;
+		    }
+		
 	}
-	
+
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -443,18 +480,48 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 	
 	public void listParkButtonOnClicked(View V) {
 		
+		
+		if(profileList.getVisibility()== View.VISIBLE)
+			profileClicked(null);
+			
+		
+		
+		LayoutParams params = footerList.getLayoutParams();
+		if(footerList.getVisibility()== View.VISIBLE){
+			
+			footerList.setVisibility(View.GONE);
+			footerList.setTag("GONE");
+			myMapLayout.setTranslationY(0);
+			parktr_bottomRelativeLayout.setVisibility(View.VISIBLE);
+			parkTopIcon.setBackgroundResource(R.drawable.parktr_top_icon);
+	    	searchTopIcon.setBackgroundResource(R.drawable.search_top_icon);
+		}
+			else{
+			
+			params.height = (int) (display.getHeight()*0.7);
+			Commons.log(""+params.height);
+			mapSize = (params.height)*(-1);
+	    	footerList.setVisibility(View.VISIBLE);
+	    	footerList.setTag("VISIBLE");
+	    	parktr_bottomRelativeLayout.setVisibility(View.GONE);
+	    	myMapLayout.setTranslationY(mapSize);
+	    	parkTopIcon.setBackgroundResource(R.drawable.back_button);
+	    	searchTopIcon.setBackgroundResource(R.drawable.searchbox_bos);
+	    	//footerList.setVisibility(View.VISIBLE);
+			//footerList.startAnimation(animUp);
+			}
 	}
 	
 	public void mapLayersButtonOnClicked(View V) {
 		switch (Commons.mapLayer) {
 			case normal: 
-				mapView.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-				Commons.mapLayer = Commons.MapLayers.hybrid;
-				break;
+			mapView.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+			Commons.mapLayer = Commons.MapLayers.hybrid;
+			break;
 			case hybrid:
-				mapView.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-				Commons.mapLayer = Commons.MapLayers.normal;
-				break;
+			mapView.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+			Commons.mapLayer = Commons.MapLayers.normal;
+			break;
 		}
 	}
 	
@@ -463,15 +530,37 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		showOnMapFunction();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void profileClicked(View V) {	
-		
-		if(footerList.getVisibility()== View.VISIBLE){
-			footerList.setVisibility(View.INVISIBLE);
-			myMapLayout.setTranslationY(0);}
+		if(footerList.getVisibility()== View.VISIBLE)
+			listParkButtonOnClicked(null);
+	
+		LayoutParams params = profileList.getLayoutParams();
+		if(profileList.getVisibility()== View.VISIBLE){
 			
+			
+		
+			profileList.setVisibility(View.GONE);
+			profileList.setTag("GONE");
+			myMapLayout.setTranslationY(0);
+			parktr_bottomRelativeLayout.setVisibility(View.VISIBLE);
+			parkTopIcon.setBackgroundResource(R.drawable.parktr_top_icon);
+	    	searchTopIcon.setBackgroundResource(R.drawable.search_top_icon);
+		}
 			else{
-			footerList.setVisibility(View.VISIBLE);
-			myMapLayout.setTranslationY(-850);}
+			
+			
+			params.height = (int) (display.getHeight()*0.7);
+			Commons.log(""+params.height);
+			mapSize = (params.height)*(-1);
+	    	profileList.setVisibility(View.VISIBLE);
+	    	profileList.setTag("VISIBLE");
+	    	parktr_bottomRelativeLayout.setVisibility(View.GONE);
+	    	myMapLayout.setTranslationY(mapSize);
+	    	parkTopIcon.setBackgroundResource(R.drawable.back_button);
+	    	searchTopIcon.setBackgroundResource(R.drawable.searchbox_bos);
+			
+			}
 		
 	}
 	
@@ -542,7 +631,8 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 				
 				@Override
 				public void onMapClick(LatLng arg0) {
-					//setMarkersToDefault();
+					
+					
 				}
 			});
         	
@@ -597,70 +687,43 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		boolean result = false;
 		
 		if(!marker.getId().equals("cm")){
+			
+			
 			for (int i = 0; i < Commons.parkingPoints.size(); i++) {
-				if (Commons.parkingPoints.get(i).getMarker().getId().equals(marker.getId()) && Commons.parkingPoints.get(i).getIsShown() == false) {
-					
-					int choosenDrawingColor;
-					
-					if (Commons.parkingPoints.get(i).getAvailableParkSize() < 5){
-						this.infoWindowLayout.setBackgroundResource(R.drawable.new_red_info);
-						choosenDrawingColor = R.drawable.new_red_open;}
-					else if (Commons.parkingPoints.get(i).getAvailableParkSize() > 4 && Commons.parkingPoints.get(i).getAvailableParkSize()<29){
-						this.infoWindowLayout.setBackgroundResource(R.drawable.new_yellow_info);
-						choosenDrawingColor = R.drawable.new_yellow_open;}
-					else{
-						this.infoWindowLayout.setBackgroundResource(R.drawable.new_green_info);
-						choosenDrawingColor = R.drawable.new_green_open;}
-					
-					Bitmap bm = Commons.drawTextToBitmap(context,choosenDrawingColor,Commons.parkingPoints.get(i).getAvailableParkSize());
-					marker.setIcon(BitmapDescriptorFactory.fromBitmap(bm));
-					
+				if (Commons.parkingPoints.get(i).getMarker().getId().equals(marker.getId()) && !Commons.parkingPoints.get(i).getIsShown()) {
+					Commons.log("if");
+					infoWindowLayout.setBackgroundResource(drawInfoWindow(Commons.parkingPoints.get(i).getAvailableParkSize()));
 					marker.showInfoWindow();
-					//LatLng target = new LatLng(39.906247,32.758176);
-					//marker.animatePosition(target);
-					
-					
+					selectedMarker=marker;
 					Commons.parkingPoints.get(i).setIsShown(true);
-					//Commons.log("marker : true : " + i + " " + Commons.parkingPoints.get(i).getMarker().getId());
+					com.esetron.parktr.MapWrapperLayout mapContainer = (com.esetron.parktr.MapWrapperLayout) findViewById(R.id.mainFrameID);
+				    int container_height = mapContainer.getHeight();
+				    Projection projection = mapView.getProjection();
+				    LatLng markerLatLng = new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
+				    Point markerScreenPosition = projection.toScreenLocation(markerLatLng);
+				    Point pointHalfScreenAbove = new Point(markerScreenPosition.x, markerScreenPosition.y + (container_height/6));
+				    LatLng aboveMarkerLatLng = projection.fromScreenLocation(pointHalfScreenAbove);
+				    CameraUpdate center = CameraUpdateFactory.newLatLng(aboveMarkerLatLng);
+				    mapView.animateCamera(center);
 					
+			
+				}
+				else if (Commons.parkingPoints.get(i).getMarker().getId().equals(marker.getId()) && Commons.parkingPoints.get(i).getIsShown()){
 					
-				} else if (Commons.parkingPoints.get(i).getIsShown() == true && Commons.parkingPoints.get(i).getMarker().getId().equals(marker.getId())){
-					
-					int choosenDrawingColor;
-					
-				
-					
-					if (Commons.parkingPoints.get(i).getAvailableParkSize() < 5)
-						
-						choosenDrawingColor = R.drawable.new_red_closed;
-					
-					else if (Commons.parkingPoints.get(i).getAvailableParkSize() > 4 && Commons.parkingPoints.get(i).getAvailableParkSize()<29)
-						choosenDrawingColor = R.drawable.new_yellow_closed;
-					else
-						choosenDrawingColor = R.drawable.new_green_closed;
-					
-					Bitmap bm = Commons.drawTextToBitmap(context,choosenDrawingColor,Commons.parkingPoints.get(i).getAvailableParkSize());
-					marker.setIcon(BitmapDescriptorFactory.fromBitmap(bm));
-					marker.hideInfoWindow();
-					//marker.hideInfoWindow();
-//					Commons.log("non : " + Commons.parkingPoints.get(i).getMarker().getId());
-//					Marker newMarker = Commons.parkingPoints.get(i).getMarker();
-//					newMarker.remove();
-					
+					Commons.log("else");
+					selectedMarker=null;
+					marker.hideInfoWindow();	
 					Commons.parkingPoints.get(i).setIsShown(false);
-					
-//					addMarkerFunction(i,Commons.parkingPoints.get(i).getParkinglotName());
-					//Commons.log("marker : false : " + i + " " + Commons.parkingPoints.get(i).getMarker().getId());
-					
-					
+			
 					} 
 				
 				else 		
 					{
-						
+					
+					Commons.parkingPoints.get(i).setIsShown(false);
+					
 					}
 			}
-			Commons.log("marker");
 			
 		
 		}
@@ -680,8 +743,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		
 		}
 	
-		//infoWindowUpperText.setTypeface(tfNormal);
-    	//infoWindowBottomText.setTypeface(tfLight);
+		
 		return true;	
 	}
 	
@@ -770,6 +832,7 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 				mapView.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngPointCenter, Commons.mapViewZoomLevel));
 			}
 			mapView.animateCamera(CameraUpdateFactory.zoomTo(Commons.mapViewZoomLevel), 4000, null);
+			Log.i("582","animateCamera");
 		}
 	}
 	
@@ -780,49 +843,18 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 		
 		if(!Commons.parkingPoints.get(i).getIsShown()){
 		
-		if (Commons.parkingPoints.get(i).getAvailableParkSize() > 29) {
+			int choosenDrawing = drawMarkerIcon(Commons.parkingPoints.get(i).getAvailableParkSize());
+			
+			Bitmap bm = Commons.drawTextToBitmap(Commons.hostAct,choosenDrawing,Commons.parkingPoints.get(i).getAvailableParkSize());
+			marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(bm)));
+			//marker.animatePosition(Commons.parkingPoints.get(i).getLatLng());
+			
+		
+		}
 
+			marker.setTitle(String.valueOf(Commons.parkingPoints.get(i).getAvailableParkSize()));
+			marker.setSnippet(Commons.parkingPoints.get(i).getParkinglotName()+"--"+Commons.parkingPoints.get(i).getParkingLotLocation());
 		
-			Bitmap bm = Commons.drawTextToBitmap(Commons.hostAct,R.drawable.new_green_closed ,Commons.parkingPoints.get(i).getAvailableParkSize());
-			marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(bm)));
-			
-		}
-		else if (Commons.parkingPoints.get(i).getAvailableParkSize() <  29 && Commons.parkingPoints.get(i).getAvailableParkSize() > 4) {
-			
-			Bitmap bm = Commons.drawTextToBitmap(Commons.hostAct,R.drawable.new_yellow_closed ,Commons.parkingPoints.get(i).getAvailableParkSize());
-			marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(bm)));
-			
-		
-		}
-		else if (Commons.parkingPoints.get(i).getAvailableParkSize() < 5) {
-			
-			Bitmap bm = Commons.drawTextToBitmap(Commons.hostAct,R.drawable.new_red_closed ,Commons.parkingPoints.get(i).getAvailableParkSize());
-			marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(bm)));
-			marker.animatePosition(Commons.parkingPoints.get(i).getLatLng());
-			}
-		
-		}
-//			marker.showInfoWindow();
-//			
-//			
-//			if (Commons.parkingPoints.get(i).getIsShown() == false) {
-//				Log.i("582","2");
-//				marker.hideInfoWindow();
-//				marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.new_green_closed));
-//			Bitmap textBitmap = Commons.drawTextToBitmap(Commons.hostAct, (R.drawable.new_green_open), Commons.parkingPoints.get(i).getParkinglotName(), Commons.parkingPoints.get(i).getAvailableParkSize());
-//			Marker marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(textBitmap)));
-//			Commons.parkingPoints.get(i).setBitmap(textBitmap);
-//			marker.showInfoWindow();
-//			if (Commons.parkingPoints.get(i).getIsShown() == false) {
-//				marker.hideInfoWindow();
-//				marker.remove();
-//				marker = mapView.addMarker(new MarkerOptions().position(Commons.parkingPoints.get(i).getLatLng()).icon(BitmapDescriptorFactory.fromResource(R.drawable.new_green_closed)));
-//				marker.setTitle(title);
-			marker.setTitle(Commons.parkingPoints.get(i).getParkinglotName());
-			
-			Commons.log("****************"+Commons.parkingPoints.get(i).getParkinglotName());
-			marker.setSnippet(Commons.parkingPoints.get(i).getParkingLotLocation());
-			Commons.log("xxxxxxxxxxxxxxxxx"+Commons.parkingPoints.get(i).getParkingLotLocation());
 			Commons.parkingPoints.get(i).setMarker(marker);
 			Commons.parkingPoints.get(i).setPrevAvailableParkSize(Commons.parkingPoints.get(i).getAvailableParkSize());		
 		}
@@ -930,13 +962,28 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
 
 	private void setMarkersToDefault(){
 		 
-			Marker marker = null;
+		if(!(selectedMarker==null)){
+			
+			int choosenDrawingColor;
+			
+			int availableParkLot = Integer.parseInt(selectedMarker.getTitle());
+			
+			if (availableParkLot < 5){
+				
+				choosenDrawingColor = R.drawable.new_red_closed;
+				
+				}
+			else if (availableParkLot > 4 && availableParkLot<29){
+				choosenDrawingColor = R.drawable.new_yellow_closed;
+				}
+			else{
+				choosenDrawingColor = R.drawable.new_green_closed;
+				}
+			
+			Bitmap bm = Commons.drawTextToBitmap(context,choosenDrawingColor,availableParkLot);
+			selectedMarker.setIcon(BitmapDescriptorFactory.fromBitmap(bm));
+		}
 		
-			for (int i = 0; i < Commons.parkingPoints.size(); i++) {
-			
-				Commons.parkingPoints.get(i).setIsShown(false);
-			
-		 }
 		
 	 }
 	 
@@ -954,6 +1001,49 @@ public class MainActivity extends FragmentActivity implements OnDoubleTapListene
    public static int getPixelsFromDp(Context context, float dp) {
        final float scale = context.getResources().getDisplayMetrics().density;
        return (int)(dp * scale + 0.5f);
+   }
+   
+   public String[] parseSnippet(String snippet){
+	   
+	  
+	   String[] tokens = snippet.split("--");
+
+	  return tokens;
+   }
+   
+   public int drawInfoWindow(int size){
+	
+	   int drawingColor;
+	   
+	   if (size < 5)
+		   drawingColor = R.drawable.new_red_info;
+			
+		else if (size > 4 && size <29)
+			drawingColor = R.drawable.new_yellow_info;
+			
+		else
+			drawingColor = R.drawable.new_green_info;
+			
+		
+	   return drawingColor;
+	   
+   }
+   public static int drawMarkerIcon(int size){
+		
+	   int drawingColor;
+	   
+	   if (size < 5)
+		
+			drawingColor = R.drawable.new_red_open;
+		else if (size > 4 && size <29)
+			
+			drawingColor = R.drawable.new_yellow_open;
+		else
+		
+			drawingColor = R.drawable.new_green_open;
+		
+	   return drawingColor;
+	   
    }
    
   

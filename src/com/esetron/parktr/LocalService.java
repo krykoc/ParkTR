@@ -22,23 +22,12 @@ public class LocalService extends IntentService{
 			Commons.log("run time ex : " + ex);
 		}
 	}
-	
-	 @Override
-	    public boolean stopService(Intent name) {
-	        return super.stopService(name);
-	 }
-//	 
-//	 @Override
-//	 public void onDestroy(){
-//	       
-//	        super.onDestroy();
-//	        stopService(new Intent(this, LocalService.class));
-//	        Commons.log("Service Destroyed");
-//	    }
+
 	
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Commons.log("Local Service : Received start id " + startId + " : " + intent);
+        
         return START_STICKY;
     }
 	
@@ -62,5 +51,6 @@ public class LocalService extends IntentService{
 		Commons.log("onHandleIntent");
 		
 	}
+	
 
 }

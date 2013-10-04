@@ -32,7 +32,7 @@ public class DemoClusterOptionsProvider implements ClusterOptionsProvider {
 
 	private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	private Rect bounds = new Rect();
-
+   
 	private ClusterOptions clusterOptions = new ClusterOptions().anchor(0.5f, 0.5f);
 
 	public DemoClusterOptionsProvider(Resources resources) {
@@ -48,11 +48,15 @@ public class DemoClusterOptionsProvider implements ClusterOptionsProvider {
 
 	@Override
 	public ClusterOptions getClusterOptions(List<Marker> markers) {
+		
 
+	
 		int markersCount = markers.size();
 		int sumOfAvailableParkingLot=0;
 		for(int i=0;i<markersCount;i++){
-			sumOfAvailableParkingLot=10;
+			
+			sumOfAvailableParkingLot=sumOfAvailableParkingLot+Integer.parseInt(markers.get(i).getTitle());
+			
 		}
 		BitmapDescriptor cachedIcon = cache.get(markersCount);
 		if (cachedIcon != null) {
@@ -74,9 +78,9 @@ public class DemoClusterOptionsProvider implements ClusterOptionsProvider {
 		paint.setColor(Color.WHITE);
 		paint.setTextAlign(Align.CENTER);
 		paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
-		 
+		paint.setTextSize(35);
 		float x = bitmap.getWidth() / 2.0f;
-		float y = (bitmap.getHeight() - bounds.height()) / 2.0f - bounds.top;
+		float y = (bitmap.getHeight() - bounds.height()) / 2.7f - bounds.top;
 
 		Canvas canvas = new Canvas(bitmap);
 		canvas.drawText(text, x, y, paint);

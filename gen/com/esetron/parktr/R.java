@@ -8,6 +8,16 @@
 package com.esetron.parktr;
 
 public final class R {
+    public static final class anim {
+        public static final int anim_down=0x7f040000;
+        public static final int anim_up=0x7f040001;
+        public static final int map_anim_down=0x7f040002;
+        public static final int map_anim_up=0x7f040003;
+    }
+    public static final class array {
+        public static final int accordion_sections=0x7f0a0000;
+        public static final int accordion_visibility=0x7f0a0001;
+    }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
@@ -49,6 +59,38 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int cameraZoom=0x7f010005;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_font=0x7f010014;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int header_layout_fold_button_id=0x7f010012;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int header_layout_id=0x7f010011;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int header_layout_label_id=0x7f010013;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int icon_label=0x7f01000f;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int icon_resource=0x7f01000e;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int icon_resource_off=0x7f010010;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -63,6 +105,26 @@ containing a value of this type.
 </table>
          */
         public static final int mapType=0x7f010000;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int section_bottom=0x7f010018;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int section_container=0x7f010016;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int section_container_parent=0x7f010017;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int section_headers=0x7f010015;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int section_visibility=0x7f010019;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -129,28 +191,32 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f01000d;
     }
     public static final class color {
-        public static final int ame_default_cluster_circle_color_extra_large=0x7f040003;
-        public static final int ame_default_cluster_circle_color_large=0x7f040002;
-        public static final int ame_default_cluster_circle_color_medium=0x7f040001;
-        public static final int ame_default_cluster_circle_color_small=0x7f040000;
-        public static final int ame_default_cluster_circle_shadow_color=0x7f040004;
-        public static final int ame_default_cluster_text_color=0x7f040005;
-        public static final int ame_default_cluster_text_shadow_color=0x7f040006;
-        public static final int common_action_bar_splitter=0x7f040010;
+        public static final int ame_default_cluster_circle_color_extra_large=0x7f050003;
+        public static final int ame_default_cluster_circle_color_large=0x7f050002;
+        public static final int ame_default_cluster_circle_color_medium=0x7f050001;
+        public static final int ame_default_cluster_circle_color_small=0x7f050000;
+        public static final int ame_default_cluster_circle_shadow_color=0x7f050004;
+        public static final int ame_default_cluster_text_color=0x7f050005;
+        public static final int ame_default_cluster_text_shadow_color=0x7f050006;
+        public static final int border_color=0x7f050012;
+        public static final int common_action_bar_splitter=0x7f050010;
         /**  Sign-in Button Colors 
          */
-        public static final int common_signin_btn_dark_text_default=0x7f040007;
-        public static final int common_signin_btn_dark_text_disabled=0x7f040009;
-        public static final int common_signin_btn_dark_text_focused=0x7f04000a;
-        public static final int common_signin_btn_dark_text_pressed=0x7f040008;
-        public static final int common_signin_btn_default_background=0x7f04000f;
-        public static final int common_signin_btn_light_text_default=0x7f04000b;
-        public static final int common_signin_btn_light_text_disabled=0x7f04000d;
-        public static final int common_signin_btn_light_text_focused=0x7f04000e;
-        public static final int common_signin_btn_light_text_pressed=0x7f04000c;
-        public static final int common_signin_btn_text_dark=0x7f040012;
-        public static final int common_signin_btn_text_light=0x7f040013;
-        public static final int transparent=0x7f040011;
+        public static final int common_signin_btn_dark_text_default=0x7f050007;
+        public static final int common_signin_btn_dark_text_disabled=0x7f050009;
+        public static final int common_signin_btn_dark_text_focused=0x7f05000a;
+        public static final int common_signin_btn_dark_text_pressed=0x7f050008;
+        public static final int common_signin_btn_default_background=0x7f05000f;
+        public static final int common_signin_btn_light_text_default=0x7f05000b;
+        public static final int common_signin_btn_light_text_disabled=0x7f05000d;
+        public static final int common_signin_btn_light_text_focused=0x7f05000e;
+        public static final int common_signin_btn_light_text_pressed=0x7f05000c;
+        public static final int common_signin_btn_text_dark=0x7f050016;
+        public static final int common_signin_btn_text_light=0x7f050017;
+        public static final int header_border_shadow=0x7f050014;
+        public static final int header_color=0x7f050013;
+        public static final int section_color=0x7f050015;
+        public static final int transparent=0x7f050011;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -159,21 +225,21 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050009;
-        public static final int activity_vertical_margin=0x7f05000a;
-        public static final int ame_default_cluster_circle_blur_radius=0x7f050000;
-        public static final int ame_default_cluster_circle_shadow_blur_radius=0x7f050001;
-        public static final int ame_default_cluster_circle_shadow_offset_x=0x7f050002;
-        public static final int ame_default_cluster_circle_shadow_offset_y=0x7f050003;
-        public static final int ame_default_cluster_text_padding=0x7f050004;
-        public static final int ame_default_cluster_text_shadow_blur_radius=0x7f050005;
-        public static final int ame_default_cluster_text_shadow_offset_x=0x7f050006;
-        public static final int ame_default_cluster_text_shadow_offset_y=0x7f050007;
-        public static final int ame_default_cluster_text_size=0x7f050008;
-        public static final int cluster_text_size_large=0x7f05000d;
-        public static final int cluster_text_size_medium=0x7f05000c;
-        public static final int cluster_text_size_small=0x7f05000b;
-        public static final int text_size=0x7f05000e;
+        public static final int activity_horizontal_margin=0x7f060009;
+        public static final int activity_vertical_margin=0x7f06000a;
+        public static final int ame_default_cluster_circle_blur_radius=0x7f060000;
+        public static final int ame_default_cluster_circle_shadow_blur_radius=0x7f060001;
+        public static final int ame_default_cluster_circle_shadow_offset_x=0x7f060002;
+        public static final int ame_default_cluster_circle_shadow_offset_y=0x7f060003;
+        public static final int ame_default_cluster_text_padding=0x7f060004;
+        public static final int ame_default_cluster_text_shadow_blur_radius=0x7f060005;
+        public static final int ame_default_cluster_text_shadow_offset_x=0x7f060006;
+        public static final int ame_default_cluster_text_shadow_offset_y=0x7f060007;
+        public static final int ame_default_cluster_text_size=0x7f060008;
+        public static final int cluster_text_size_large=0x7f06000d;
+        public static final int cluster_text_size_medium=0x7f06000c;
+        public static final int cluster_text_size_small=0x7f06000b;
+        public static final int text_size=0x7f06000e;
     }
     public static final class drawable {
         public static final int add=0x7f020000;
@@ -206,240 +272,269 @@ containing a value of this type.
         public static final int ddd_03=0x7f02001b;
         public static final int deneme1=0x7f02001c;
         public static final int deneme2=0x7f02001d;
-        public static final int favorites=0x7f02001e;
-        public static final int find_park_bottom_menu=0x7f02001f;
-        public static final int first_page=0x7f020020;
-        public static final int gradient_my_park_location_button=0x7f020021;
-        public static final int green_park_lot_closed=0x7f020022;
-        public static final int green_park_lot_open=0x7f020023;
-        public static final int green_park_on_clicked=0x7f020024;
-        public static final int ic_launcher=0x7f020025;
-        public static final int ic_map_pin=0x7f020026;
-        public static final int ic_map_pin_cluster=0x7f020027;
-        public static final int ic_map_pin_cluster_toaster=0x7f020028;
-        public static final int ic_map_pin_toaster=0x7f020029;
-        public static final int ic_plusone_medium_off_client=0x7f02002a;
-        public static final int ic_plusone_small_off_client=0x7f02002b;
-        public static final int ic_plusone_standard_off_client=0x7f02002c;
-        public static final int ic_plusone_tall_off_client=0x7f02002d;
-        public static final int ikoo_03=0x7f02002e;
-        public static final int ikoo_3_empty=0x7f02002f;
-        public static final int list_bottom_menu=0x7f020030;
-        public static final int list_bottom_menu_item=0x7f020031;
-        public static final int logo=0x7f020032;
-        public static final int logo_toaster=0x7f020033;
-        public static final int m1=0x7f020034;
-        public static final int m2=0x7f020035;
-        public static final int m3=0x7f020036;
-        public static final int m4=0x7f020037;
-        public static final int m5=0x7f020038;
-        public static final int my_park_location_button=0x7f020039;
-        public static final int navi=0x7f02003a;
-        public static final int navigate=0x7f02003b;
-        public static final int navigation=0x7f02003c;
-        public static final int new_gray_info=0x7f02003d;
-        public static final int new_green_closed=0x7f02003e;
-        public static final int new_green_info=0x7f02003f;
-        public static final int new_green_open=0x7f020040;
-        public static final int new_red_closed=0x7f020041;
-        public static final int new_red_info=0x7f020042;
-        public static final int new_red_open=0x7f020043;
-        public static final int new_yellow_closed=0x7f020044;
-        public static final int new_yellow_info=0x7f020045;
-        public static final int new_yellow_open=0x7f020046;
-        public static final int park_bottom_menu_item=0x7f020047;
-        public static final int parktr_iossapp_first_page=0x7f020048;
-        public static final int parktr_iossapp_footerbuttons_layers=0x7f020049;
-        public static final int parktr_iossapp_footerbuttons_listview=0x7f02004a;
-        public static final int parktr_iossapp_footerbuttons_mylocation=0x7f02004b;
-        public static final int parktr_iossapp_footerbuttons_profile=0x7f02004c;
-        public static final int parktr_iossapp_footerbuttons_settings=0x7f02004d;
-        public static final int parktr_iossapp_footerlistview=0x7f02004e;
-        public static final int parktr_iossapp_footermaplayers=0x7f02004f;
-        public static final int parktr_iossapp_footermylocations=0x7f020050;
-        public static final int parktr_iossapp_footerprofile=0x7f020051;
-        public static final int parktr_iossapp_footersettings=0x7f020052;
-        public static final int parktr_iossapp_greeninfoparklotmarker=0x7f020053;
-        public static final int parktr_iossapp_greeninfoparklotmarker_zoomout=0x7f020054;
-        public static final int parktr_iossapp_greeninfoparklotmarker_zoomout_empty=0x7f020055;
-        public static final int parktr_iossapp_greenparklotmarker=0x7f020056;
-        public static final int parktr_iossapp_redinfoparklotmarker=0x7f020057;
-        public static final int parktr_iossapp_redinfoparklotmarker_zoomout=0x7f020058;
-        public static final int parktr_iossapp_redparklotmarker=0x7f020059;
-        public static final int parktr_iossapp_yellowinfoparklotmarker=0x7f02005a;
-        public static final int parktr_iossapp_yellowinfoparklotmarker_zoomout=0x7f02005b;
-        public static final int parktr_iossapp_yellowparklotemptymarker=0x7f02005c;
-        public static final int parktr_iossapp_yellowparklotmarker=0x7f02005d;
-        public static final int parktr_top_frame=0x7f02005e;
-        public static final int parktr_top_icon=0x7f02005f;
-        public static final int profile_bottom_menu=0x7f020060;
-        public static final int profile_bottom_menu_item=0x7f020061;
-        public static final int red_park_lot_closed=0x7f020062;
-        public static final int red_park_lot_open=0x7f020063;
-        public static final int red_park_on_clicked=0x7f020064;
-        public static final int search_logo=0x7f020065;
-        public static final int search_top_icon=0x7f020066;
-        public static final int searchbox=0x7f020067;
-        public static final int searchbox_bos=0x7f020068;
-        public static final int yellow_park_lot_closed=0x7f020069;
-        public static final int yellow_park_lot_open=0x7f02006a;
-        public static final int yellow_park_on_clicked=0x7f02006b;
+        public static final int down=0x7f02001e;
+        public static final int favorites=0x7f02001f;
+        public static final int find_park_bottom_menu=0x7f020020;
+        public static final int first_page=0x7f020021;
+        public static final int footer_bg=0x7f020022;
+        public static final int footer_border=0x7f020023;
+        public static final int footer_solid=0x7f020024;
+        public static final int gradient_my_park_location_button=0x7f020025;
+        public static final int green_park_lot_closed=0x7f020026;
+        public static final int green_park_lot_open=0x7f020027;
+        public static final int green_park_on_clicked=0x7f020028;
+        public static final int header_bg=0x7f020029;
+        public static final int header_border=0x7f02002a;
+        public static final int header_solid=0x7f02002b;
+        public static final int header_solid_inner=0x7f02002c;
+        public static final int header_solid_outer=0x7f02002d;
+        public static final int ic_launcher=0x7f02002e;
+        public static final int ic_map_pin=0x7f02002f;
+        public static final int ic_map_pin_cluster=0x7f020030;
+        public static final int ic_map_pin_cluster_toaster=0x7f020031;
+        public static final int ic_map_pin_toaster=0x7f020032;
+        public static final int ic_plusone_medium_off_client=0x7f020033;
+        public static final int ic_plusone_small_off_client=0x7f020034;
+        public static final int ic_plusone_standard_off_client=0x7f020035;
+        public static final int ic_plusone_tall_off_client=0x7f020036;
+        public static final int ikoo_03=0x7f020037;
+        public static final int ikoo_3_empty=0x7f020038;
+        public static final int list_bottom_menu=0x7f020039;
+        public static final int list_bottom_menu_item=0x7f02003a;
+        public static final int logo=0x7f02003b;
+        public static final int logo_toaster=0x7f02003c;
+        public static final int m1=0x7f02003d;
+        public static final int m2=0x7f02003e;
+        public static final int m3=0x7f02003f;
+        public static final int m4=0x7f020040;
+        public static final int m5=0x7f020041;
+        public static final int my_park_location_button=0x7f020042;
+        public static final int navi=0x7f020043;
+        public static final int navigate=0x7f020044;
+        public static final int navigation=0x7f020045;
+        public static final int new_gray_info=0x7f020046;
+        public static final int new_green_closed=0x7f020047;
+        public static final int new_green_info=0x7f020048;
+        public static final int new_green_open=0x7f020049;
+        public static final int new_red_closed=0x7f02004a;
+        public static final int new_red_info=0x7f02004b;
+        public static final int new_red_open=0x7f02004c;
+        public static final int new_yellow_closed=0x7f02004d;
+        public static final int new_yellow_info=0x7f02004e;
+        public static final int new_yellow_open=0x7f02004f;
+        public static final int park_bottom_menu_item=0x7f020050;
+        public static final int parktr_iossapp_first_page=0x7f020051;
+        public static final int parktr_iossapp_footerbuttons_layers=0x7f020052;
+        public static final int parktr_iossapp_footerbuttons_listview=0x7f020053;
+        public static final int parktr_iossapp_footerbuttons_mylocation=0x7f020054;
+        public static final int parktr_iossapp_footerbuttons_profile=0x7f020055;
+        public static final int parktr_iossapp_footerbuttons_settings=0x7f020056;
+        public static final int parktr_iossapp_footerlistview=0x7f020057;
+        public static final int parktr_iossapp_footermaplayers=0x7f020058;
+        public static final int parktr_iossapp_footermylocations=0x7f020059;
+        public static final int parktr_iossapp_footerprofile=0x7f02005a;
+        public static final int parktr_iossapp_footersettings=0x7f02005b;
+        public static final int parktr_iossapp_greeninfoparklotmarker=0x7f02005c;
+        public static final int parktr_iossapp_greeninfoparklotmarker_zoomout=0x7f02005d;
+        public static final int parktr_iossapp_greeninfoparklotmarker_zoomout_empty=0x7f02005e;
+        public static final int parktr_iossapp_greenparklotmarker=0x7f02005f;
+        public static final int parktr_iossapp_redinfoparklotmarker=0x7f020060;
+        public static final int parktr_iossapp_redinfoparklotmarker_zoomout=0x7f020061;
+        public static final int parktr_iossapp_redparklotmarker=0x7f020062;
+        public static final int parktr_iossapp_yellowinfoparklotmarker=0x7f020063;
+        public static final int parktr_iossapp_yellowinfoparklotmarker_zoomout=0x7f020064;
+        public static final int parktr_iossapp_yellowparklotemptymarker=0x7f020065;
+        public static final int parktr_iossapp_yellowparklotmarker=0x7f020066;
+        public static final int parktr_top_frame=0x7f020067;
+        public static final int parktr_top_icon=0x7f020068;
+        public static final int profile_bottom_menu=0x7f020069;
+        public static final int profile_bottom_menu_item=0x7f02006a;
+        public static final int red_park_lot_closed=0x7f02006b;
+        public static final int red_park_lot_open=0x7f02006c;
+        public static final int red_park_on_clicked=0x7f02006d;
+        public static final int search_logo=0x7f02006e;
+        public static final int search_top_icon=0x7f02006f;
+        public static final int searchbox=0x7f020070;
+        public static final int searchbox_bos=0x7f020071;
+        public static final int section=0x7f020072;
+        public static final int section_border=0x7f020073;
+        public static final int section_solid=0x7f020074;
+        public static final int up=0x7f020075;
+        public static final int yellow_park_lot_closed=0x7f020076;
+        public static final int yellow_park_lot_open=0x7f020077;
+        public static final int yellow_park_on_clicked=0x7f020078;
     }
     public static final class id {
-        public static final int RlMain=0x7f060010;
-        public static final int action_settings=0x7f060022;
-        public static final int bottomLayout=0x7f060008;
-        public static final int bottomList=0x7f06000c;
-        public static final int checkbox_cluster=0x7f06000a;
-        public static final int cluster_views=0x7f060009;
-        public static final int cmi_btn_left=0x7f060016;
-        public static final int cmi_btn_right=0x7f060018;
-        public static final int cmi_tv_left=0x7f060017;
-        public static final int cmi_tv_right=0x7f060019;
-        public static final int extended_listview_left_text=0x7f06001b;
-        public static final int extended_listview_right_text=0x7f06001c;
-        public static final int footerListLayout=0x7f06001d;
-        public static final int header=0x7f060007;
-        public static final int hybrid=0x7f060004;
-        public static final int imageview_comment=0x7f060011;
-        public static final int infoWindowAddBtn=0x7f060012;
-        public static final int infoWindowBottomTV=0x7f060015;
-        public static final int infoWindowNavigateBtn=0x7f060013;
-        public static final int infoWindowUpperTV=0x7f060014;
-        public static final int listParkButton=0x7f06001f;
-        public static final int listView1=0x7f06001a;
-        public static final int mainFrameID=0x7f060005;
-        public static final int mapLayersButton=0x7f060020;
-        public static final int mapViewID=0x7f060006;
-        public static final int myProfileButton=0x7f060021;
-        public static final int none=0x7f060000;
-        public static final int normal=0x7f060001;
-        public static final int parktr_bottomRelativeLayout=0x7f06001e;
-        public static final int parktr_icon=0x7f06000e;
-        public static final int satellite=0x7f060002;
-        public static final int search_button=0x7f06000f;
-        public static final int seekbar_cluster_size=0x7f06000b;
-        public static final int terrain=0x7f060003;
-        public static final int top_menu_frame=0x7f06000d;
+        public static final int RlMain=0x7f070015;
+        public static final int accordion_view=0x7f070029;
+        public static final int action_settings=0x7f07002e;
+        public static final int bottomLayout=0x7f07000c;
+        public static final int bottomList=0x7f070010;
+        public static final int bottomProfileLayout=0x7f070011;
+        public static final int checkbox_cluster=0x7f07000e;
+        public static final int cluster_views=0x7f07000d;
+        public static final int cmi_btn_left=0x7f07001b;
+        public static final int cmi_btn_right=0x7f07001d;
+        public static final int cmi_tv_left=0x7f07001c;
+        public static final int cmi_tv_right=0x7f07001e;
+        public static final int editText1=0x7f07002c;
+        public static final int example_get_by_id=0x7f07002a;
+        public static final int extended_listview_left_text=0x7f070020;
+        public static final int extended_listview_right_text=0x7f070021;
+        public static final int foldButton=0x7f070006;
+        public static final int foldText=0x7f070007;
+        public static final int footerListLayout=0x7f070022;
+        public static final int header=0x7f07000b;
+        public static final int hybrid=0x7f070004;
+        public static final int imageview_comment=0x7f070016;
+        public static final int infoWindowAddBtn=0x7f070017;
+        public static final int infoWindowBottomTV=0x7f07001a;
+        public static final int infoWindowNavigateBtn=0x7f070018;
+        public static final int infoWindowUpperTV=0x7f070019;
+        public static final int left_partial_menu=0x7f070023;
+        public static final int listParkButton=0x7f070025;
+        public static final int listView1=0x7f07001f;
+        public static final int mainFrameID=0x7f070009;
+        public static final int mainlayout=0x7f070005;
+        public static final int mapLayersButton=0x7f070026;
+        public static final int mapViewID=0x7f07000a;
+        public static final int myProfileButton=0x7f070027;
+        public static final int none=0x7f070000;
+        public static final int normal=0x7f070001;
+        public static final int parktr_bottomRelativeLayout=0x7f070024;
+        public static final int parktr_icon=0x7f070013;
+        public static final int profileListLayout=0x7f070028;
+        public static final int ratingBar1=0x7f07002b;
+        public static final int satellite=0x7f070002;
+        public static final int search_button=0x7f070014;
+        public static final int section_content=0x7f070008;
+        public static final int seekBar1=0x7f07002d;
+        public static final int seekbar_cluster_size=0x7f07000f;
+        public static final int terrain=0x7f070003;
+        public static final int top_menu_frame=0x7f070012;
     }
     public static final class layout {
-        public static final int activity_first=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int custom_info_window=0x7f030002;
-        public static final int custom_marker_info=0x7f030003;
-        public static final int extended_parking_lot_dialog=0x7f030004;
-        public static final int extended_parking_lot_listview=0x7f030005;
-        public static final int list_all_park_lots=0x7f030006;
-        public static final int my_locations_list=0x7f030007;
-        public static final int parktr_bottom=0x7f030008;
+        public static final int accordion_footer=0x7f030000;
+        public static final int accordion_header=0x7f030001;
+        public static final int accordion_section=0x7f030002;
+        public static final int activity_first=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int custom_info_window=0x7f030005;
+        public static final int custom_marker_info=0x7f030006;
+        public static final int extended_parking_lot_dialog=0x7f030007;
+        public static final int extended_parking_lot_listview=0x7f030008;
+        public static final int list_all_park_lots=0x7f030009;
+        public static final int my_locations_list=0x7f03000a;
+        public static final int parktr_bottom=0x7f03000b;
+        public static final int profile=0x7f03000c;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int main=0x7f0c0000;
     }
     public static final class plurals {
-        public static final int count_points=0x7f080000;
+        public static final int count_points=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f07001a;
-        public static final int app_name=0x7f070019;
+        public static final int action_settings=0x7f08001a;
+        public static final int app_name=0x7f080019;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_enabling_title=0x7f070014;
+        public static final int auth_client_needs_enabling_title=0x7f080014;
         /**   Title for notification shown when GooglePlayServices needs to be
         installed for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_installation_title=0x7f070015;
+        public static final int auth_client_needs_installation_title=0x7f080015;
         /**   Title for notification shown when GooglePlayServices needs to be
         udpated for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_update_title=0x7f070016;
+        public static final int auth_client_needs_update_title=0x7f080016;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f070017;
+        public static final int auth_client_play_services_err_notification_msg=0x7f080017;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f070018;
+        public static final int auth_client_requested_by_msg=0x7f080018;
         /**   Title for notification shown when a bad version of GooglePlayServices
         has been installed and needs correction for an application to work.
         [CHAR LIMIT=70] 
          */
-        public static final int auth_client_using_bad_version_title=0x7f070013;
-        public static final int btt_ok=0x7f07001e;
+        public static final int auth_client_using_bad_version_title=0x7f080013;
+        public static final int btt_ok=0x7f08001e;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_button=0x7f070006;
+        public static final int common_google_play_services_enable_button=0x7f080006;
         /**  Message in confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_enable_text=0x7f070005;
+        public static final int common_google_play_services_enable_text=0x7f080005;
         /**  Title of confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_title=0x7f070004;
+        public static final int common_google_play_services_enable_title=0x7f080004;
         /**  Button in confirmation dialog for installing Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_button=0x7f070003;
+        public static final int common_google_play_services_install_button=0x7f080003;
         /**  (For phones) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_phone=0x7f070001;
+        public static final int common_google_play_services_install_text_phone=0x7f080001;
         /**  (For tablets) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_tablet=0x7f070002;
+        public static final int common_google_play_services_install_text_tablet=0x7f080002;
         /**  Title of confirmation dialog informing user that they need to install
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_title=0x7f070000;
+        public static final int common_google_play_services_install_title=0x7f080000;
         /**  Message in confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_invalid_account_text=0x7f07000c;
+        public static final int common_google_play_services_invalid_account_text=0x7f08000c;
         /**  Title of confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_invalid_account_title=0x7f07000b;
+        public static final int common_google_play_services_invalid_account_title=0x7f08000b;
         /**  Message in confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_network_error_text=0x7f07000a;
+        public static final int common_google_play_services_network_error_text=0x7f08000a;
         /**  Title of confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_network_error_title=0x7f070009;
+        public static final int common_google_play_services_network_error_title=0x7f080009;
         /**  Message in confirmation dialog informing user there is an unknown issue in Google Play
         services [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unknown_issue=0x7f07000d;
+        public static final int common_google_play_services_unknown_issue=0x7f08000d;
         /**  Message in confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_text=0x7f07000f;
+        public static final int common_google_play_services_unsupported_text=0x7f08000f;
         /**  Title of confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_unsupported_title=0x7f07000e;
+        public static final int common_google_play_services_unsupported_title=0x7f08000e;
         /**  Button in confirmation dialog for updating Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_button=0x7f070010;
+        public static final int common_google_play_services_update_button=0x7f080010;
         /**  Message in confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_update_text=0x7f070008;
+        public static final int common_google_play_services_update_text=0x7f080008;
         /**  Title of confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_title=0x7f070007;
+        public static final int common_google_play_services_update_title=0x7f080007;
         /**  Sign-in button text [CHAR LIMIT=15] 
          */
-        public static final int common_signin_button_text=0x7f070011;
+        public static final int common_signin_button_text=0x7f080011;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
-        public static final int common_signin_button_text_long=0x7f070012;
-        public static final int get_parking_lots=0x7f070020;
-        public static final int gps_disabled=0x7f07001d;
-        public static final int gps_enable_query=0x7f07001c;
-        public static final int hello_world=0x7f07001b;
-        public static final int main_url=0x7f07001f;
-        public static final int set_park_off=0x7f070022;
-        public static final int set_park_on=0x7f070021;
+        public static final int common_signin_button_text_long=0x7f080012;
+        public static final int get_parking_lots=0x7f080020;
+        public static final int gps_disabled=0x7f08001d;
+        public static final int gps_enable_query=0x7f08001c;
+        public static final int hello_world=0x7f08001b;
+        public static final int main_url=0x7f08001f;
+        public static final int set_park_off=0x7f080022;
+        public static final int set_park_on=0x7f080021;
     }
     public static final class style {
         /** 
@@ -463,12 +558,12 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f0b0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
-        public static final int Transparent=0x7f090002;
+        public static final int AppTheme=0x7f0b0001;
+        public static final int Transparent=0x7f0b0002;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.
@@ -715,5 +810,188 @@ containing a value of this type.
           @attr name com.esetron.parktr:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
+        /** Attributes that can be used with a accordion.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #accordion_custom_font com.esetron.parktr:custom_font}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_header_layout_fold_button_id com.esetron.parktr:header_layout_fold_button_id}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_header_layout_id com.esetron.parktr:header_layout_id}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_header_layout_label_id com.esetron.parktr:header_layout_label_id}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_section_bottom com.esetron.parktr:section_bottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_section_container com.esetron.parktr:section_container}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_section_container_parent com.esetron.parktr:section_container_parent}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_section_headers com.esetron.parktr:section_headers}</code></td><td></td></tr>
+           <tr><td><code>{@link #accordion_section_visibility com.esetron.parktr:section_visibility}</code></td><td></td></tr>
+           </table>
+           @see #accordion_custom_font
+           @see #accordion_header_layout_fold_button_id
+           @see #accordion_header_layout_id
+           @see #accordion_header_layout_label_id
+           @see #accordion_section_bottom
+           @see #accordion_section_container
+           @see #accordion_section_container_parent
+           @see #accordion_section_headers
+           @see #accordion_section_visibility
+         */
+        public static final int[] accordion = {
+            0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014,
+            0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018,
+            0x7f010019
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#custom_font}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.esetron.parktr:custom_font
+        */
+        public static final int accordion_custom_font = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#header_layout_fold_button_id}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:header_layout_fold_button_id
+        */
+        public static final int accordion_header_layout_fold_button_id = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#header_layout_id}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:header_layout_id
+        */
+        public static final int accordion_header_layout_id = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#header_layout_label_id}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:header_layout_label_id
+        */
+        public static final int accordion_header_layout_label_id = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#section_bottom}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:section_bottom
+        */
+        public static final int accordion_section_bottom = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#section_container}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:section_container
+        */
+        public static final int accordion_section_container = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#section_container_parent}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:section_container_parent
+        */
+        public static final int accordion_section_container_parent = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#section_headers}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:section_headers
+        */
+        public static final int accordion_section_headers = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#section_visibility}
+          attribute's value can be found in the {@link #accordion} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:section_visibility
+        */
+        public static final int accordion_section_visibility = 8;
+        /** Attributes that can be used with a image_labeled_button.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #image_labeled_button_icon_label com.esetron.parktr:icon_label}</code></td><td></td></tr>
+           <tr><td><code>{@link #image_labeled_button_icon_resource com.esetron.parktr:icon_resource}</code></td><td></td></tr>
+           </table>
+           @see #image_labeled_button_icon_label
+           @see #image_labeled_button_icon_resource
+         */
+        public static final int[] image_labeled_button = {
+            0x7f01000e, 0x7f01000f
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#icon_label}
+          attribute's value can be found in the {@link #image_labeled_button} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:icon_label
+        */
+        public static final int image_labeled_button_icon_label = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#icon_resource}
+          attribute's value can be found in the {@link #image_labeled_button} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:icon_resource
+        */
+        public static final int image_labeled_button_icon_resource = 0;
+        /** Attributes that can be used with a toggle_image_labeled_button.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #toggle_image_labeled_button_icon_resource_off com.esetron.parktr:icon_resource_off}</code></td><td></td></tr>
+           </table>
+           @see #toggle_image_labeled_button_icon_resource_off
+         */
+        public static final int[] toggle_image_labeled_button = {
+            0x7f010010
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.esetron.parktr.R.attr#icon_resource_off}
+          attribute's value can be found in the {@link #toggle_image_labeled_button} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.esetron.parktr:icon_resource_off
+        */
+        public static final int toggle_image_labeled_button_icon_resource_off = 0;
     };
 }

@@ -2,14 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".MainActivity" 
+    tools:context=".MainActivity"
+ 	
     android:id="@+id/mainFrameID">
-
+ 	
   	<fragment
         android:id="@+id/mapViewID"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_gravity="center_horizontal"
+
 		android:name="pl.mg6.android.maps.extensions.SupportMapFragment"/>
   <!--
     <ImageView 
@@ -23,16 +25,30 @@
         />   
         
           -->
-  <!--      
+     <LinearLayout  
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentBottom="true"
+    	android:layout_centerHorizontal="true"
+         > 
+   
     <include 
         android:id="@+id/bottomLayout"
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:layout_gravity="bottom"
+    	android:layout_gravity="bottom"    	
     	layout="@layout/my_locations_list"
-    />	  	
-    -->
-    
+    	/>
+    <include 
+        android:id="@+id/bottomProfileLayout"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="bottom"    	
+    	layout="@layout/profile"
+		/>
+ 
+	</LinearLayout>
+	
     <LinearLayout
         android:id="@+id/top_menu_frame"
         android:layout_width="wrap_content"
@@ -42,11 +58,11 @@
         android:layout_centerHorizontal="true"
         >
         
-       <ImageView 
+       <Button 
         android:id="@+id/parktr_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/parktr_top_icon"
+        android:background="@drawable/parktr_top_icon"
         android:scaleType="centerCrop"
         android:layout_gravity="top"
         />   
@@ -97,6 +113,6 @@
     />
     </LinearLayout>
     
-       		
+ 
 
 </com.esetron.parktr.MapWrapperLayout>
